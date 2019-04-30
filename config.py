@@ -24,7 +24,7 @@ __C = edict()
 cfg = __C
 
 # for gpu allocation
-__C.GPU_AVAILABLE = '3,1,2,0'
+__C.GPU_AVAILABLE = '0'
 __C.GPU_USE_COUNT = len(__C.GPU_AVAILABLE.split(','))
 __C.GPU_MEMORY_FRACTION = 1
 
