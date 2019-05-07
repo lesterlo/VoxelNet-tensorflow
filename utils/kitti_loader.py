@@ -141,7 +141,8 @@ class KittiLoader(object):
                         labels.append([line for line in open(
                             self.f_label[load_index], 'r').readlines()])
                     else:
-                        labels.append(['Dummy 0.00 0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0'])
+                        #labels.append(['Dummy 0.00 0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0'])
+                        labels.append([''])
                     tag.append(self.data_tag[load_index])
                     voxel.append(process_pointcloud(raw_lidar[-1]))
 
