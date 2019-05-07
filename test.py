@@ -24,7 +24,7 @@ if __name__ == '__main__':
     parser.add_argument('-n', '--tag', type=str, nargs='?', default='default',
                         help='set log tag')
     parser.add_argument('--output-path', type=str, nargs='?',
-                        default='./data/results/data', help='results output dir')
+                        default='./data/object/results', help='results output dir')
     parser.add_argument('-b', '--single-batch-size', type=int, nargs='?', default=1,
                         help='set batch size for each gpu')
 
@@ -34,7 +34,7 @@ if __name__ == '__main__':
     save_model_dir = os.path.join('./save_model', args.tag)
 
     with tf.Graph().as_default():
-        with KittiLoader(object_dir=os.path.join(dataset_dir, 'testing_real'), queue_size=100, require_shuffle=False, is_testset=True, batch_size=args.single_batch_size * cfg.GPU_USE_COUNT, use_multi_process_num=8, multi_gpu_sum=cfg.GPU_USE_COUNT) as test_loader:
+        with KittiLoader(object_dir=os.path.join(dataset_dir, 'testing'), queue_size=100, require_shuffle=False, is_testset=True, batch_size=args.single_batch_size * cfg.GPU_USE_COUNT, use_multi_process_num=8, multi_gpu_sum=cfg.GPU_USE_COUNT) as test_loader:
             gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=cfg.GPU_MEMORY_FRACTION,
                                         visible_device_list=cfg.GPU_AVAILABLE,
                                         allow_growth=True)
