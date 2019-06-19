@@ -25,6 +25,9 @@ from utils.preprocess import process_pointcloud
 
 # for non-raw dataset
 
+#LABEL_F_NAME = 'label_2'
+LABEL_F_NAME = 'true_label'
+
 
 class KittiLoader(object):
 
@@ -60,7 +63,7 @@ class KittiLoader(object):
                 self.f_lidar.append(os.path.join(
                     self.object_dir, 'velodyne', line + '.bin'))
                 self.f_label.append(os.path.join(
-                    self.object_dir, 'label_2', line + '.txt'))
+                    self.object_dir, LABEL_F_NAME , line + '.txt'))
         else:
             self.f_rgb = glob.glob(os.path.join(
                 self.object_dir, 'image_2', '*.png'))
@@ -69,7 +72,7 @@ class KittiLoader(object):
                 self.object_dir, 'velodyne', '*.bin'))
             self.f_lidar.sort()
             self.f_label = glob.glob(os.path.join(
-                self.object_dir, 'label_2', '*.txt'))
+                self.object_dir, LABEL_F_NAME, '*.txt'))
             self.f_label.sort()
 
         self.data_tag = [name.split('/')[-1].split('.')[-2]
